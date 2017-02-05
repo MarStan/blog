@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ListController@show');
 
 Route::group(['prefix' => 'api', 'middleware' => 'api', 'namespace' => 'Api'], function() {
     Route::resource('articles', 'ArticlesController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
