@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class ArticlesController extends Controller
     {
         $articles = Article::all();
 
-        return $articles;
+        return view('articles', ['articles' => $articles]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_article');
     }
 
     /**

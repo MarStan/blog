@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', 'ListController@show');
-
-Route::group(['prefix' => 'api', 'middleware' => 'api', 'namespace' => 'Api'], function() {
-    Route::resource('articles', 'ArticlesController');
-});
+Route::get('/', ['as' => 'index', 'uses' => 'ArticlesController@index']);
+Route::get('/create', ['as' => 'articles.create', 'uses' => 'ArticlesController@create']);
+Route::get('/show/{id}', ['as' => 'articles.show', 'uses' => 'ArticlesController@show']);
+Route::delete('/destroy/{id}', ['as' => 'articles.destroy', 'uses' => 'ArticlesController@destroy']);
 
 Auth::routes();
 
